@@ -17,8 +17,8 @@ builder.Services.AddHttpClient<IYouTubeVideo, YouTubeVideo>();
 builder.Services.AddScoped<AzureOpenAIClient>(sp =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
-    var endpoint = new Uri(config["https://polite-ground-030dc3103.4.azurestaticapps.net/api/v1"]);
-    var credential = new AzureKeyCredential(config["e5340fe3-1d6a-42ce-9286-eaa9ce9df884"]);
+    var endpoint = new Uri(config["OpenAI:Endpoint"]);
+    var credential = new AzureKeyCredential(config["OpenAI:ApiKey"]);
     var client = new AzureOpenAIClient(endpoint, credential);
 
     return client;
